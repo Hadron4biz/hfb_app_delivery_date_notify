@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_ddn" model="ir.ui.view">
+        <field name="name">sale.order.form.hfb.app.delivery.date.notify</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="priority">120</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header" position="inside">
+                <field name="x_ddn_show_button" invisible="1"/>
+                <button name="action_ddn_send"
+                        type="object"
+                        class="btn-primary"
+                        string="Send Delivery Date Notification"
+                        invisible="not x_ddn_show_button"
+                        groups="sales_team.group_sale_salesman"/>
+                <button name="action_ddn_dismiss"
+                        type="object"
+                        class="btn-secondary"
+                        string="Dismiss Notification"
+                        invisible="not x_ddn_show_button"
+                        groups="sales_team.group_sale_salesman"/>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <div class="alert alert-warning" role="alert"
+                     invisible="not x_ddn_show_button">
+                    <field name="x_ddn_summary" nolabel="1" readonly="1" class="oe_inline"/>
+                    Decide whether to notify the customer (buttons above).
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_sales_order_filter_ddn" model="ir.ui.view">
+        <field name="name">sale.order.select.hfb.app.delivery.date.notify</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                <separator/>
+                <filter name="x_ddn_pending"
+                        string="Awaiting Delivery Date Notification"
+                        domain="[('x_ddn_pending', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
