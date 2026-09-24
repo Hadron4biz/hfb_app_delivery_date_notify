@@ -33,7 +33,7 @@ Two ready-made, editable email templates are included - one for a delayed
 delivery, one for an earlier delivery - picked automatically based on
 whether the new date is later or earlier than the one last communicated.
 """,
-    'version': "17.0.1.0.0",
+    'version': "19.0.1.0.0",
     'author': "Hadron for Business sp. z o.o.",
     'website': "http://hadronforbusiness.com",
     'license': "OPL-1",
