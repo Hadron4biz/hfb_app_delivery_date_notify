@@ -45,6 +45,9 @@ whether the new date is later or earlier than the one last communicated.
         'data/mail_template_delivery_date_notify.xml',
         'views/sale_order_delivery_date_notify_views.xml',
     ],
+    'images': [
+        'static/description/banner_screenshot.png',
+    ],
     'installable': True,
     'application': False,
 }
